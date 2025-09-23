@@ -411,7 +411,7 @@ const styles = {
     },
 
     feedbackCorrect: {
-        color: '#10b981'
+        color: '#1b8b66ff'
     },
 
     feedbackWrong: {
