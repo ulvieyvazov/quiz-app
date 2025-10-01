@@ -1,0 +1,19 @@
+{
+  "name": "quiz-backend",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "nanoid": "^5.0.7",
+    "better-sqlite3": "^11.7.0",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
+

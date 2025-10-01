@@ -1,159 +1,5 @@
-import React, { useState } from "react";
-
-const questions = [
-    {
-        question: "Xarici yaddaş qurğularını müəyyən edin:",
-        options: [
-            "A) 2, 3, 6",
-            "B) 1, 4, 5",
-            "C) 1, 5, 6",
-            "D) 1, 3, 5",
-            "E) 2, 4, 6"
-        ],
-        answer: "B) 1, 4, 5"
-    },
-    {
-        question: "Hansı fikir doğru deyil (MS Word 2019)?",
-        options: [
-            "A) Seçilmiş mətndən başqa bütün mətni çapa vermək olar",
-            "B) CTRL+End kursoru sənədin sonuna aparır",
-            "C) Görünüş rejimləri View tabından dəyişdirilir",
-            "D) Səhifəyə nömrə Insert tabından qoyulur",
-            "E) Fraqmentləri Ctrl ilə seçmək olar"
-        ],
-        answer: "A) Seçilmiş mətndən başqa bütün mətni çapa vermək olar"
-    },
-    {
-        question: "B2:E9 diapazonunda neçə sütun var (MS Excel 2019)?",
-        options: ["A) 12", "B) 8", "C) 3", "D) 32", "E) 4"],
-        answer: "E) 4"
-    },
-    {
-        question: "USB nədir?",
-        options: [
-            "A) Yaddaş qurğusudur",
-            "B) Universal portdur",
-            "C) Paralel portdur",
-            "D) Universal proqramdır",
-            "E) Videoadapterdir"
-        ],
-        answer: "B) Universal portdur"
-    },
-    {
-        question: "CTRL+ENTER düymələr kombinasiyası basıldıqda nə baş verir (MS Word 2019)?",
-        options: [
-            "A) Mətn yeni səhifədən başlanır",
-            "B) Mətn yeni bölmədən başlanır",
-            "C) Mətn yeni abzasdan başlanır",
-            "D) Mətn yeni sətirdən başlanır",
-            "E) Bütöv mətn seçilir"
-        ],
-        answer: "A) Mətn yeni səhifədən başlanır"
-    },
-    {
-        question: "Utilitlərin yerinə yetirdikləri funksiyalara aiddir:",
-        options: [
-            "A) 3, 4, 6",
-            "B) 1, 4, 5",
-            "C) 2, 4, 6",
-            "D) 2, 3, 6",
-            "E) 1, 2, 5"
-        ],
-        answer: "D) 2, 3, 6"
-    },
-    {
-        question: "Vektarizator proqramı hansıdır?",
-        options: [
-            "A) Corel Draw",
-            "B) Adobe Illustrator",
-            "C) Adobe Stream Line",
-            "D) Adobe Photoshop",
-            "E) Corel Photo-Paint"
-        ],
-        answer: "C) Adobe Stream Line"
-    },
-    {
-        question: "Müxtəlif topologiyalı, eyni protokollu şəbəkələri birləşdirən aparat proqram təminatlı qurğu hansıdır?",
-        options: [
-            "A) Connector (Birləşdirici)",
-            "B) Modem",
-            "C) Router (Marşrutlaşdırıcı)",
-            "D) Transiver",
-            "E) Bridge (Körpü)"
-        ],
-        answer: "C) Router (Marşrutlaşdırıcı)"
-    },
-    {
-        question: "Verilənlər bazasında verilmiş şərtlər əsasında verilənlərin seçimini həyata keçirməyə imkan verən obyekt necə adlanır (MS Access 2019)?",
-        options: ["A) Cədvəl", "B) Forma", "C) Makros", "D) Hesabat", "E) Sorğu"],
-        answer: "E) Sorğu"
-    },
-    {
-        question: "MS Access 2019 proqramı verilənlər bazasının hansı modelinə uyğundur?",
-        options: [
-            "A) Relyasiya",
-            "B) Obyektyönlü",
-            "C) Şəbəkə",
-            "D) İyerarxik",
-            "E) Semantik"
-        ],
-        answer: "A) Relyasiya"
-    }, {
-        question: "File Explorer proqram pəncərəsinin sol kənarındakı ağacvari strukturda göstərilən qovluqların yaranması üçün əməliyyatların ardıcıllığını müəyyən edin (Windows 10).",
-        options: [
-            "A) 5, 4, 3, 7, 2, 6, 1",
-            "B) 4, 1, 2, 6, 5, 3, 7",
-            "C) 4, 5, 3, 1, 2, 6, 7",
-            "D) 5, 4, 1, 2, 6, 7, 3",
-            "E) 3, 4, 2, 7, 5, 1, 6"
-        ],
-        answer: "B) 4, 1, 2, 6, 5, 3, 7"
-    },
-    {
-        question: "Slayda hansı obyekti əlavə etdikdə Ribbon interfeysində Format alət tabı yaranır (MS PowerPoint 2019)?",
-        options: [
-            "A) WordArt",
-            "B) Table",
-            "C) Equation",
-            "D) SmartArt",
-            "E) Picture"
-        ],
-        answer: "E) Picture"
-    },
-    {
-        question: "Aşağıdakılardan hansı arxiv faylıdır?",
-        options: [
-            "A) Ölçüsü azaldılmış və məzmunu dəyişdirilmiş fayllar",
-            "B) Məzmunu xüsusi alqoritmlərlə dəyişdirilmiş icra olunan sistem faylları",
-            "C) Sıxılmış və sonradan istifadə üçün saxlanılan fayllar",
-            "D) Ölçüsü artırılmış və icazəsiz girişdən qorunan fayllar",
-            "E) Uzun müddət istifadə olunmayan fayllar"
-        ],
-        answer: "C) Sıxılmış və sonradan istifadə üçün saxlanılan fayllar"
-    },
-    {
-        question: "Slayd obyektlərinə verilmiş animasiya effektlərinin Start formalarına hansılar aid deyil (MS PowerPoint 2019)?",
-        options: [
-            "A) 3, 4, 6",
-            "B) 1, 4, 6",
-            "C) 1, 2, 5",
-            "D) 2, 5, 6",
-            "E) 2, 3, 5"
-        ],
-        answer: "B) 1, 4, 6"
-    },
-    {
-        question: "MS Word proqramında mətn cədvələ çevrildikdə alınan cədvəlin 2-ci sütunu hansı olar? (Ayırıcı simvol ;)",
-        options: [
-            "A) Malın adı, Yanvar, Fevral, Mart",
-            "B) Malın adı, Yanvar, Stul, 3",
-            "C) Malın adı, Fevral, Mart",
-            "D) Malın adı, Stul, Mart",
-            "E) Ay, Yanvar, Fevral, 3"
-        ],
-        answer: "A) Malın adı, Yanvar, Fevral, Mart"
-    }
-];
+import React, { useEffect, useState } from "react";
+let questionsCache = [];
 
 
 const styles = {
@@ -419,6 +265,28 @@ const styles = {
     }
 };
 
+styles.input = {
+    flex: 1,
+    minWidth: 0,
+    background: 'rgba(255, 255, 255, 0.85)',
+    border: '1px solid rgba(0,0,0,0.1)',
+    borderRadius: '12px',
+    padding: '12px 14px',
+    fontSize: '16px',
+    outline: 'none'
+};
+styles.select = {
+    flex: 1,
+    minWidth: 0,
+    background: 'rgba(255,255,255,0.85)',
+    border: '1px solid rgba(0,0,0,0.1)',
+    borderRadius: '12px',
+    padding: '12px 14px',
+    fontSize: '16px',
+    outline: 'none',
+    color: '#111827'
+};
+
 // CSS keyframes için style tag ekleme
 const styleSheet = document.createElement('style');
 styleSheet.textContent = `
@@ -444,12 +312,71 @@ styleSheet.textContent = `
 `;
 document.head.appendChild(styleSheet);
 
-export default function QuizApp() {
+export default function QuizApp({ initialName = "", initialCategory = "", autoStart = false }) {
     const [current, setCurrent] = useState(0);
     const [score, setScore] = useState(0);
     const [showResult, setShowResult] = useState(false);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
     const [showFeedback, setShowFeedback] = useState(false);
+    const [playerName, setPlayerName] = useState(initialName);
+    const [started, setStarted] = useState(!!autoStart);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+    const [questions, setQuestions] = useState([]);
+    const [leaderboard, setLeaderboard] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(initialCategory || "");
+    const [difficulties, setDifficulties] = useState([]);
+    const [selectedDifficulty, setSelectedDifficulty] = useState("");
+    const [timeLeft, setTimeLeft] = useState(0);
+    const [timerActive, setTimerActive] = useState(false);
+
+    useEffect(() => {
+        // kategorileri ve zorlukları yükle
+        fetch('/api/categories')
+            .then(r => r.json())
+            .then(data => setCategories(Array.isArray(data?.categories) ? data.categories : []))
+            .catch(() => {});
+        fetch('/api/difficulties')
+            .then(r => r.json())
+            .then(data => setDifficulties(Array.isArray(data?.difficulties) ? data.difficulties : []))
+            .catch(() => {});
+    }, []);
+
+    useEffect(() => {
+        if (!started) return;
+        setLoading(true);
+        setError("");
+        const params = new URLSearchParams();
+        if (selectedCategory) params.set('category', selectedCategory);
+        if (selectedDifficulty) params.set('difficulty', selectedDifficulty);
+        const query = params.toString() ? `?${params.toString()}` : '';
+        fetch(`/api/questions${query}`)
+            .then(r => r.json())
+            .then(data => {
+                const qs = Array.isArray(data?.questions) ? data.questions : [];
+                questionsCache = qs;
+                setQuestions(qs);
+                // süre limiti kaldırıldı
+                setTimeLeft(0);
+                setTimerActive(false);
+            })
+            .catch(() => setError("Suallar yüklənmədi"))
+            .finally(() => setLoading(false));
+    }, [started, selectedCategory, selectedDifficulty]);
+
+    // süre limiti kaldırıldığı için timer kullanılmıyor
+
+    const loadLeaderboard = () => {
+        const params = new URLSearchParams();
+        if (selectedCategory) params.set('category', selectedCategory);
+        if (selectedDifficulty) params.set('difficulty', selectedDifficulty);
+        const query = params.toString() ? `?${params.toString()}` : '';
+        fetch(`/api/scores${query}`)
+            .then(r => r.json())
+            .then(d => setLeaderboard(Array.isArray(d?.scores) ? d.scores : []))
+            .catch(() => {});
+    };
 
     const handleAnswer = (option) => {
         setSelectedAnswer(option);
@@ -467,6 +394,13 @@ export default function QuizApp() {
                 setShowFeedback(false);
             } else {
                 setShowResult(true);
+                const token = localStorage.getItem('quiz_token') || undefined;
+                fetch('/api/scores', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name: playerName || 'Anonim', score, total: questions.length, category: selectedCategory || 'General', difficulty: selectedDifficulty || null, token })
+                }).finally(() => loadLeaderboard());
+                setTimerActive(false);
             }
         }, 1500);
     };
@@ -477,6 +411,8 @@ export default function QuizApp() {
         setShowResult(false);
         setSelectedAnswer(null);
         setShowFeedback(false);
+        setStarted(false);
+        setQuestions([]);
     };
 
     const getScoreColor = () => {
@@ -525,7 +461,47 @@ export default function QuizApp() {
                     <div style={styles.titleUnderline}></div>
                 </div>
 
-                {showResult ? (
+                {!started ? (
+                    <div style={styles.card}>
+                        <h2 style={styles.questionTitle}>Başlamaq üçün adınızı daxil edin</h2>
+                        <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
+                            <input
+                                value={playerName}
+                                onChange={(e) => setPlayerName(e.target.value)}
+                                placeholder="Ad"
+                                style={styles.input}
+                            />
+                        </div>
+                        <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
+                            <select
+                                value={selectedCategory}
+                                onChange={(e) => setSelectedCategory(e.target.value)}
+                                style={styles.select}
+                            >
+                                <option value="">Bütün kateqoriyalar</option>
+                                {categories.map((cat) => (
+                                    <option key={cat} value={cat}>{cat}</option>
+                                ))}
+                            </select>
+                            <select
+                                value={selectedDifficulty}
+                                onChange={(e) => setSelectedDifficulty(e.target.value)}
+                                style={styles.select}
+                            >
+                                <option value="">Tüm zorluklar</option>
+                                {difficulties.map((dif) => (
+                                    <option key={dif} value={dif}>{dif}</option>
+                                ))}
+                            </select>
+                            <button
+                                onClick={() => setStarted(true)}
+                                style={styles.resetButton}
+                                className="reset-button"
+                            >Başla</button>
+                        </div>
+                        {error && <div style={{ color: '#fecaca' }}>{error}</div>}
+                    </div>
+                ) : showResult ? (
                     <div style={{ ...styles.card, ...styles.resultCard }}>
                         <div style={styles.trophyIcon}>🏆</div>
                         <h2 style={styles.resultTitle}>Quiz Tamamlandı!</h2>
@@ -556,10 +532,31 @@ export default function QuizApp() {
                             <span className="rotate-icon">🔄</span>
                             <span>Yenidən Başla</span>
                         </button>
+
+                        {leaderboard.length > 0 && (
+                            <div style={{ marginTop: '24px', textAlign: 'left' }}>
+                                <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '8px' }}>Liderlər</h3>
+                                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+                                    {leaderboard.map((row, idx) => (
+                                        <li key={idx} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                                            <span>{idx + 1}. {row.name}</span>
+                                            <span>{row.score}/{row.total}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
                     </div>
                 ) : (
                     <div style={styles.card}>
-                        {/* Progress Bar */}
+                        {loading && <div style={{ marginBottom: '16px' }}>Yüklənir...</div>}
+                        {!loading && error && <div style={{ marginBottom: '16px', color: '#fecaca' }}>{error}</div>}
+                        {!loading && !error && questions.length === 0 && (
+                            <div style={{ marginBottom: '16px' }}>Suallar tapılmadı. <button onClick={() => setStarted(false)} style={{ ...styles.resetButton, padding: '8px 16px', fontSize: '0.95rem' }}>Geri</button></div>
+                        )}
+
+                        {!loading && !error && questions.length > 0 && (
+                            <>
                         <div style={styles.progressHeader}>
                             <span style={styles.progressText}>
                                 Sual {current + 1} / {questions.length}
@@ -568,6 +565,7 @@ export default function QuizApp() {
                                 Xal: {score}
                             </span>
                         </div>
+                        {/* Süre limiti kaldırıldı */}
 
                         <div style={styles.questionProgressBar}>
                             <div
@@ -578,14 +576,12 @@ export default function QuizApp() {
                             ></div>
                         </div>
 
-                        {/* Question */}
                         <h2 style={styles.questionTitle}>
-                            {questions[current].question}
+                                    {questions[current]?.question}
                         </h2>
 
-                        {/* Options */}
                         <div style={styles.optionsContainer}>
-                            {questions[current].options.map((option, index) => (
+                                    {questions[current]?.options?.map((option, index) => (
                                 <button
                                     key={index}
                                     onClick={() => !showFeedback && handleAnswer(option)}
@@ -604,7 +600,6 @@ export default function QuizApp() {
                             ))}
                         </div>
 
-                        {/* Feedback Message */}
                         {showFeedback && (
                             <div
                                 style={{
@@ -615,9 +610,10 @@ export default function QuizApp() {
                             >
                                 {selectedAnswer === questions[current].answer ?
                                     "Təbriklər! Doğru cavab! 🎉" :
-                                    "Təssüf! Səhv cavab 😔"
-                                }
+                                            "Təssüf! Səhv cavab 😔"}
                             </div>
+                                )}
+                            </>
                         )}
                     </div>
                 )}
